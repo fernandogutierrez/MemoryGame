@@ -2,18 +2,17 @@ var Table=function(){
     var iMaxNum = 5;
     var numberOfElements = (iMaxNum+1) * (iMaxNum+1);
     var i, j;
-   // var symbols=['*','$','@','#','%'];
+   
     var tableHidden = [];//new Array(iMaxNum - 1);
     var tableWithValues = [];
-    //list to control the bussi pos
-    var listOfBusyPosXY = [];
-
-    //1) fill with hidden elements (T)
-    //2) fill another table with values
-    //3) receive by console one number to " function discover table hidden with 
-    // elemnts of the 2)"
     
-   var inListPosXY = function (posXY) {
+    var listOfBusyPosXY = [];
+    
+    /**
+     * verify if the position [x][y] exist in list of listOfBusyPosXY    
+     * @param  {string} posXY, positions selected
+     */
+    var inListPosXY = function (posXY) {
      var res = false;
        listOfBusyPosXY.forEach(function(entry) {
               if(entry == posXY)
@@ -21,14 +20,26 @@ var Table=function(){
             })
       return res;
    };
+   /**
+    * return one random number
+    */
     var getRandom= function(){
         var num = iMaxNum+1;
         return Math.floor((Math.random()*num)); //0,1,2,3,4,.....
     };
+    /**
+     * Fill each element of the table
+     * @param  {int} element, this is the element to fill the table
+     * @param  {int} posX , position in axis X
+     * @param  {int} posY , position in axis Y
+     */
     var fillElement = function  (element, posX,posY) {        
       tableWithValues[posX][posY] = element;
    }
-
+   /**
+    * fill a table with a pair of element
+    * @param  {int} element, represent the element to fill pairs
+    */
    var fillTableWithElements = function (element) {
        var count = 2;
        
@@ -45,7 +56,15 @@ var Table=function(){
          }
       }
    }
-
+   var printTable = function(table) {
+        for (i = 0; i <= iMaxNum; i++){
+            console.log(i,table[i].join(' '));
+        }
+    }
+  /**
+   * fill two tables, the first one to hidden elements and the other one to 
+   * fill the elements
+   */
    this.fillTable = function () {
         for (i = 0; i <= iMaxNum; i++)
         {
@@ -57,8 +76,9 @@ var Table=function(){
                 tableWithValues[i][j] = "*";
             }
         }
-        this.display();
+        printTable(tableHidden);
    }
+   
    this.displayAndFillElements = function () {
      var numberOfPares = numberOfElements/2;
         while (numberOfPares>0) {
@@ -66,18 +86,7 @@ var Table=function(){
             fillTableWithElements(element);                 
             numberOfPares--;
         }
+        printTable(tableWithValues);
    }
-    this.display=function(){
-        for (i = 0; i <= iMaxNum; i++){
-            console.log(i, tableHidden[i].join(' '));
-        }
-    };
-   
-    this.displayFilledElements=function(){
-        for (i = 0; i <= iMaxNum; i++){
-            console.log(i,tableWithValues[i].join(' '));
-        }
-    };
-
 
 };
