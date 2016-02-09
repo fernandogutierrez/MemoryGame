@@ -1,17 +1,14 @@
-var Table=function(){
-    var iMaxNum = 5;
-    var numberOfElements = (iMaxNum+1) * (iMaxNum+1);
-    var i, j;
-   
-    var tableHidden = [];//new Array(iMaxNum - 1);
-    var tableWithValues = [];
-    
+ //5
+var Table=function(ssize,listOfElements){
+
+    var size = ssize;
+    var numberOfFields = (size + 1) * (size + 1);
+    var firstTable = [];
+    var secondTable = [];
     var listOfBusyPosXY = [];
-    
-    /**
-     * verify if the position [x][y] exist in list of listOfBusyPosXY    
-     * @param  {string} posXY, positions selected
-     */
+
+
+
     var inListPosXY = function (posXY) {
      var res = false;
        listOfBusyPosXY.forEach(function(entry) {
@@ -20,12 +17,12 @@ var Table=function(){
             })
       return res;
    };
-   /**
-    * return one random number
-    */
     var getRandom= function(){
-        var num = iMaxNum+1;
-        return Math.floor((Math.random()*num)); //0,1,2,3,4,.....
+        /**
+         * max number of random numbers, since 0 
+         */
+        var maxNumberOfRan = size+1;
+        return Math.floor((Math.random()*maxNumberOfRan)); //0,1,2,3,4,...
     };
     /**
      * Fill each element of the table
@@ -33,14 +30,14 @@ var Table=function(){
      * @param  {int} posX , position in axis X
      * @param  {int} posY , position in axis Y
      */
-    var fillElement = function  (element, posX,posY) {        
-      tableWithValues[posX][posY] = element;
+    var fillOneElement = function (element, posX,posY) {        
+      secondTable[posX][posY] = element;
    }
    /**
-    * fill a table with a pair of element
-    * @param  {int} element, represent the element to fill pairs
+    * fill a table with one pair of element
+    * @param  {int} element, represent the element to fill 
     */
-   var fillTableWithElements = function (element) {
+   var fillOnePair = function (element) {
        var count = 2;
        
       while(count > 0){
@@ -51,42 +48,52 @@ var Table=function(){
          if (!(inListPosXY(posXY))) 
          {
             listOfBusyPosXY.push(posXY);
-            fillElement(element,posX,posY);
+            fillOneElement(element,posX,posY);
             count --;
          }
       }
    }
    var printTable = function(table) {
-        for (i = 0; i <= iMaxNum; i++){
+        for (var i = 0; i <= size; i++){
             console.log(i,table[i].join(' '));
         }
     }
-  /**
-   * fill two tables, the first one to hidden elements and the other one to 
-   * fill the elements
-   */
-   this.fillTable = function () {
-        for (i = 0; i <= iMaxNum; i++)
+
+  var fillTables = function() {
+      fillTable(firstTable); 
+      fillTable(secondTable);
+  }
+  var fillTable = function (tableToFill) {
+
+        for (var i = 0; i <= size; i++)
         {
-            tableHidden[i] = [];
-            tableWithValues[i] = [];
-            for (j = 0; j <= iMaxNum; j++)
+            tableToFill[i] = [];
+            for (var j = 0; j <= size; j++)
             {
-                tableHidden[i][j] = "*";
-                tableWithValues[i][j] = "*";
+                tableToFill[i][j] = "*";
             }
         }
-        printTable(tableHidden);
    }
-   
-   this.displayAndFillElements = function () {
-     var numberOfPares = numberOfElements/2;
-        while (numberOfPares>0) {
-            var element = numberOfPares;
-            fillTableWithElements(element);                 
-            numberOfPares--;
+   //fill table with pair of elements like
+   // [2,2] , [3,3],[8,8]
+   var fillPairs = function () {
+     var numberOfPairs = Math.floor(numberOfFields/2);
+        while (numberOfPairs>0) {
+          
+            var element = numberOfPairs;//element to field of object
+
+            fillOnePair(element);                 
+            numberOfPairs--;
         }
-        printTable(tableWithValues);
+        printTable(secondTable);
    }
+   this.discoverElement = function(posX,posY) {
+       firstTable[posX][posY] = secondTable[posX][posY]
+       printTable(firstTable);
+   }
+
+  fillTables();
+  fillPairs();
+
 
 };
