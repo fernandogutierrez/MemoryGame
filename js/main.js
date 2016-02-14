@@ -1,21 +1,41 @@
 
-require(["table2"],function(table2){
-  table2.Table(); 
-});
+var name = prompt("What is your name?");
+var player = new Player(name);
+var sizeTable = prompt("Insert the size");
+
+var numberOfFields = (sizeTable + 1) * (sizeTable + 1);
+var numberOfPairs = Math.floor(numberOfFields/2);
+var elements = []; 
+	while (numberOfPairs>0)
+	{
+         var el = new Element();
+         el.generateValue();
+         elements.push(el.getValue());
+         numberOfPairs--;
+	}
+
+var table = new Table(sizeTable,elements);
+console.log(elements);
 
 
 
-var name = prompt("Please enter your name", "Name");
-console.log("Welcome " + name);
 
 
-//table = new Table(4);
-//var t = new Table(5);
 
-//t.discoverElement(2,2);
-  /*
-	var posX = prompt("Enter an axis X");
-    var posY = prompt("Enter an axis Y");
-  */
+
+var element =  new Element();
+element.generateValue();
+var value = element.getValue();
+table.fillPairs(value);
+
+
+
+
+
+
+
+
+
+
 
 
