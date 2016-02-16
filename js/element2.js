@@ -1,7 +1,8 @@
 var Element = function () {
 
     	var value = "";
-        var symbols=['*','$','@','#','%','ªª','!!','Ç','ºº','|'];
+        var symbols=['*','$','@','#','%','ªª','!!'
+        ,'Ç','ºº','£','†','ê','ž','ƒ','┌','║'];
 
 
     	var getRandom = function () {
