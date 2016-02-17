@@ -2,17 +2,14 @@ var imported = document.createElement('script');
 imported.src = 'C:/Users/FernandoGutierrez/Desktop/Solutions/JavaScript2/MemoryGame/js/table.js';
 document.head.appendChild(imported);
 
-var Game = function(namePlayer)
+var Game = function(player.getName(),player.getSize())
 {
     var tries;
     var score;
     var table;
-     /**
-     *
-     * @param namePlayer this string recive the name of the player
-     */    
+    
 
-    var player = new Player(namePlayer);
+    
 
     this.decrementTries = function(){
       tries--;
