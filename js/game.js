@@ -1,5 +1,4 @@
 
-
 var Game = function(player)
 {
 
@@ -12,6 +11,8 @@ var Game = function(player)
      /**
      *
      * @param namePlayer this string recive the name of the player
+     * @param sizeTable this string recive the size of the table
+     * 
      */    
 
     var player = new Player(namePlayer,sizeTable);
