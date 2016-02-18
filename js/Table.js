@@ -1,18 +1,15 @@
-var imported = document.createElement('script');
-imported.src = 'C:/Users/FernandoGutierrez/Desktop/Solutions/JavaScript2/MemoryGame/js/element.js';
-document.head.appendChild(imported);
 
 
-var Table=function(ssize,listOfElements){
+var Table=function(ssize){
 
-    var size = ssize;
+    var size = ssize; //size of the table
     var numberOfFields = size * size;
     var firstTable = [];
     var secondTable = [];
     var listOfBusyPosXY = [];
-    this.listOfElements = listOfElements;
+    var elementDiscovered = "";
     //
-    var element = new Element();
+    var element; 
     //
     var inListPosXY = function (posXY) {
      var res = false;
@@ -47,7 +44,8 @@ var Table=function(ssize,listOfElements){
        
       while(count > 0){
          var posX = getRandom();
-         var posY = getRandom();         
+         var posY = getRandom(); 
+         element.setPosXY(posX,posY);        
          var posXY = posX.toString()+posY.toString();
 
          if (!(inListPosXY(posXY))) 
@@ -58,15 +56,40 @@ var Table=function(ssize,listOfElements){
          }
       }
    }
+   /*
    var printTable = function(table) {
+    var stringValues = [];
         for (var i = 0; i < size; i++){
-            console.log(i,table[i].join(' '));
+            stringValues = getStrings(table[i]); 
+            console.log(i,stringValues.join(' '));
         }
     }
+*/
+    var printTable = function (table) {
+       for (var i = 0; i < size; i++){
+            console.log(i,table[i].join(' '));
+        } 
+    }
+
+
+   
+    var getStrings = function (tableToConvert) {
+     var res = [];
+     
+       for (var i = 0 ; i < size; i++) {
+           res.push(tableToConvert[i].getValue());
+
+         }  
+      
+        return res;
+    }
+
 
   var fillTables = function() {
       fillTable(firstTable); 
+      
       fillTable(secondTable);
+      
   }
   var fillTable = function (tableToFill) {
 
@@ -84,27 +107,53 @@ var Table=function(ssize,listOfElements){
    // 
    // 
    var getElement = function (argument) {
-      element.generateValue();
-      return element.getValue();
+      element = new Element();
+      element.generateValue();// * / - 
+      return element;
    }
    var fillPairs = function () {
      var numberOfPairs = Math.floor(numberOfFields/2);
         while (numberOfPairs>0) {
           
-            var e = getElement();//element to field of object
+            var element = getElement();//element to field of object
 
-            fillOnePair(e);                 
+
+            fillOnePair(element);                 
             numberOfPairs--;
         }
-        printTable(secondTable);
+       
+        //printTable(secondTable);
    }
+
    this.discoverElement = function(posX,posY) {
-       firstTable[posX][posY] = secondTable[posX][posY]
-       printTable(firstTable);
+       firstTable[posX][posY] = secondTable[posX][posY].getValue();
+       //printTable(firstTable);
+       
+       setElementDiscovered(secondTable[posX][posY]);
+
+      printTable(firstTable);
    }
+   var setElementDiscovered = function(element) {
+        elementDiscovered = element;
+
+   }
+  
+   this.getElementDiscovered = function() {
+     return elementDiscovered;
+   }
+
+   this.hide=function(element){
+
+      var elPosX = element.getPosX();
+      var elPoxY = element.getPosY();
+
+      firstTable[elPosX][elPoxY] = '*';
+   }
+
+
 
   fillTables();
   fillPairs();
-
-
+  
+  //return secondTable;
 };
