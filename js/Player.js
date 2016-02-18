@@ -2,9 +2,9 @@
  * Created by LuceroPenarrieta on 2/4/2016.
  */
 
-var Player=function(name){
+var Player=function(name, ssize){
     this.name=name;
-    var size;
+    var size = ssize;
     var posxy;
     /**
      *
@@ -22,11 +22,10 @@ var Player=function(name){
     this.getPosXY= function () {
         return posxy;
     };
-    this.setSize = function (ssize) {
-        size = ssize;
-    }
     this.getSize = function (argument) {
         return size;
     }
+
+    
 
 };
