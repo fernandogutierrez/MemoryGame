@@ -1,13 +1,13 @@
-﻿ var Element = function () {
+ var Element = function () {
       var status='hidden';
       var value = '*';
       var posX;
       var posY;
-        var symbols=['ƒ','$','@','#','%','†'];
+      var symbols=['ƒ','$','@','#','%','†',':','!','+','?'];
 
 
       this.getRandom = function () {
-          return Math.floor((Math.random() * 5));
+          return Math.floor((Math.random() * 9));
       };
 
       this.generateValue = function () {
@@ -16,16 +16,21 @@
     
       this.getStatus = function (argument) {
             return status;
-        }
-        this.setStatus = function (s) {
-                status = s;    
-        }
-        this.display = function () {
-            console.log(value);
-        };
-        this.getValue=function (argument) {
+      }
+  
+      this.getValue = function () {
             return value;
-        } 
+      } 
+      this.setPosXY = function(x,y){
+        posX = x;
+        posY = y;
+      };
+      this.getPosX=function(){
+        return posX;
+      };
+      this.getPosY=function(){
+        return posY;
+      };
      
    
     };
