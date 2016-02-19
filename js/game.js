@@ -1,4 +1,5 @@
 
+
 var Game = function(player)
 {
 
@@ -11,8 +12,6 @@ var Game = function(player)
      /**
      *
      * @param namePlayer this string recive the name of the player
-     * @param sizeTable this string recive the size of the table
-     * 
      */    
 
     var player = new Player(namePlayer,sizeTable);
@@ -21,7 +20,7 @@ var Game = function(player)
       tries--;
     }
    
-    this.endGame = function()
+    this.getScore = function()
     {
       return score;
     }
@@ -35,7 +34,10 @@ var Game = function(player)
     this.incrementScore = function() {
         score++;
     }
+    this.getTries = function (argument) {
+         return tries;
+    }
     
-
+     
 
 };

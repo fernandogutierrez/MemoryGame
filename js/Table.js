@@ -10,7 +10,12 @@ var Table=function(ssize){
     var elementDiscovered = "";
     //
     var element; 
-    //
+    
+
+    /**
+     * this method control the positions that are bussy
+     * @param  {string} posXY represent the axis X and Y 'XY'
+     */
     var inListPosXY = function (posXY) {
      var res = false;
        listOfBusyPosXY.forEach(function(entry) {
@@ -19,11 +24,17 @@ var Table=function(ssize){
             })
       return res;
    };
+   /**
+    * this method generated a random number from 0 to maxNumberOfRows 
+    * @return {[type]} [description]
+    */
     var getRandom= function(){
-        /**
-         * max number of random numbers, since 0 
-         */
+      /**
+       * size of the table
+       * @type {int}
+       */
         var maxNumberOfRan = size;
+
         return Math.floor((Math.random()*maxNumberOfRan)); //0,1,2,3,4,...
     };
     /**
@@ -56,23 +67,19 @@ var Table=function(ssize){
          }
       }
    }
-   /*
-   var printTable = function(table) {
-    var stringValues = [];
-        for (var i = 0; i < size; i++){
-            stringValues = getStrings(table[i]); 
-            console.log(i,stringValues.join(' '));
-        }
-    }
-*/
+   /**
+    * print by console the current table (first table)
+    * @param  {matrix} table represent a matrix[][] to print 
+    */
     var printTable = function (table) {
        for (var i = 0; i < size; i++){
             console.log(i,table[i].join(' '));
         } 
     }
-
-
-   
+    /**
+     * this method is to return one array of strings
+     * @param  {array} tableToConvert represents an array 
+     */
     var getStrings = function (tableToConvert) {
      var res = [];
      
@@ -83,14 +90,17 @@ var Table=function(ssize){
       
         return res;
     }
-
-
+  
+  /**
+   * method to fill two table
+   */
   var fillTables = function() {
       fillTable(firstTable); 
-      
       fillTable(secondTable);
-      
   }
+  /**
+   * method to fill a matrix with (*) 
+   */
   var fillTable = function (tableToFill) {
 
         for (var i = 0; i < size; i++)
@@ -102,13 +112,12 @@ var Table=function(ssize){
             }
         }
    }
+
    //fill table with pair of elements like
-   // [2,2] , [3,3],[8,8]
-   // 
-   // 
+   // [$,$] ,[/,/],[?,?]
    var getElement = function (argument) {
       element = new Element();
-      element.generateValue();// * / - 
+      element.generateValue();
       return element;
    }
    var fillPairs = function () {
@@ -121,17 +130,11 @@ var Table=function(ssize){
             fillOnePair(element);                 
             numberOfPairs--;
         }
-       
-        //printTable(secondTable);
    }
 
    this.discoverElement = function(posX,posY) {
        firstTable[posX][posY] = secondTable[posX][posY].getValue();
-       //printTable(firstTable);
-       
        setElementDiscovered(secondTable[posX][posY]);
-
-      printTable(firstTable);
    }
    var setElementDiscovered = function(element) {
         elementDiscovered = element;
@@ -149,11 +152,17 @@ var Table=function(ssize){
 
       firstTable[elPosX][elPoxY] = '*';
    }
+   this.getFirstTable = function () {
 
+     printTable(firstTable);
+      return firstTable;
+   }
+   
+   
 
 
   fillTables();
   fillPairs();
-  
+  //this.cheat();
   //return secondTable;
 };
