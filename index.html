@@ -1,14 +1,119 @@
 <html>
 <head>
-	<title> </title>
-        <script src="js/element.js"></script>
-        <script src="js/player.js"></script>   
-        <script src="js/table.js"></script>
-        <script src="js/game.js"></script>   
-        <script src="js/main.js"></script>
-      
+	<title></title>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>MemoryGame</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+   
+
+	   <script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+     
+     <script type="text/javascript" src="js/element.js"></script>
+     <script type="text/javascript" src="js/table.js"></script>
+     <script type="text/javascript" src="js/player.js"></script>
+     <script type="text/javascript" src="js/table-drawer.js"></script>
+     <script type="text/javascript" src="js/ui-table.js"></script>
+     <script type="text/javascript" src="js/control.js"></script>
+     <script type="text/javascript" src="js/main.js"></script> 
+	   <script type="text/javascript" src="js/ui-table.js"></script>
+     <script type="text/javascript" src="js/console-table.js"></script>
+
+	  <style type="text/css">
+ 
+        
+         table{
+           background-color: #AFB5E2;
+          } 
+
+         html, body, .container-table {
+            height: 100%;
+         }
+         .container-table {
+          display: table;
+         }
+         .vertical-center-row {
+          display: table-cell;
+          vertical-align: middle;
+         }
+          td {
+
+          height: 50px;
+          width: 50px;
+          box-shadow: 30px 30px 30px #22222;
+          border: 1px solid #000000
+          }
+
+          .active{
+
+          -moz-box-shadow:    inset 0 0 4px #000000;
+          -webkit-box-shadow: inset 0 0 4px #000000;
+           box-shadow:         inset 0 0 4px #000000;
+           width: 50px;
+           height: 50px;
+          }
+
+    </style>
+   
 </head>
 <body>
+   <div class="container container-table" id="centralPane">
+
+    <div class="row vertical-center-row" id="mainPage">
+
+      <div class="col-xs-6 col-md-4">
+          <img src="images/image.jpg" class="img-thumbnail">
+      </div>
+
+      <div class="col-xs-6 col-md-8">
+          
+          <h1>Memory Game</h1>
+             
+         <form>
+              <div class="form-group">
+                <label for="Nick Name">Nick Name</label>
+                <input type="text" class="form-control" id="nickName" placeholder="Nick Name">
+              </div>
+              
+             <div class="form-group">
+             <label for="Game Type">Type of the game</label>
+              <select class="form-control" id="typeGame">
+                <option>Play by Ui</option>
+                <option>Play by Console</option>
+              </select> 
+             </div>  
+
+             <div class="form-group">
+             <label for="Table Size">Size of the table</label>
+              <select class="form-control" id="size">
+                <option>2</option>
+                <option>4</option>
+                <option>6</option>
+                <option>8</option>
+              </select> 
+            </div>
+
+          <br>
+           <button type="button" class="btn btn-default" id="btn_BeginGame">Play</button>
+       </form>
+
   
-</body>
+
+       </div>
+
+     <div class="col-xs-6 col-md-1"></div>
+
+   </div>
+   <div class="row vertical-center-row" id="gamePage">
+      
+
+   </div>
+
+
+
+</div>
+    
+  </body>
 </html>

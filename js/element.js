@@ -4,26 +4,48 @@
       var posX;
       var posY;
       var symbols=['ƒ','$','@','#','%','†'];
+      var hidden = true;
 
-
-     /**
-      * method to genererate a random number
-      */
-      this.getRandom = function () {
-          return Math.floor((Math.random() * 5));
-      };
-     /**
-      * method to assign an value to an element
+      /**
+      * generateValue is a function to assign an value to an element: ['ƒ','$','@','#','%','†']
       */
       this.generateValue = function () {
-          value = symbols[this.getRandom()];
+          value = symbols[getRandom()];
+
       };
-      /**
-       * return the value of the element that can be 'ƒ','$','@','#','%','†'
-       */
+
+      this.getGeneratedValue = function () {
+          return value;
+      };
+      
+      this.isHidden = function () {
+        return hidden;
+      };
+      
+      this.hide = function () {
+         hidden = true;
+      };   
+
+      this.show = function () {
+         hidden = false;
+      };
+
       this.getValue = function () {
+        if (hidden) {
+            return '*';
+        } else{
             return value;
-      } 
+        }
+            
+      };
+      this.setValue = function (newValue) {
+        value = newValue;
+      };
+
+      var getRandom = function () {
+          return Math.floor((Math.random() * 5));
+      };
+     
       /**
        * set the position of the element 
        * @param {x} x represents the axis x
@@ -33,15 +55,11 @@
         posX = x;
         posY = y;
       };
-      /**
-       * return an integer that represents axis x
-       */
+     
       this.getPosX=function(){
         return posX;
       };
-      /**
-        * return an integer that represents axis y
-       */
+      
       this.getPosY=function(){
         return posY;
       };
