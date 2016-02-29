@@ -4,26 +4,53 @@
       var posX;
       var posY;
       var symbols=['ƒ','$','@','#','%','†'];
+      var hidden = true;
 
+      /**
+      * method to assign an value to an element
+      */
+      this.generateValue = function () {
+          value = symbols[getRandom()];
+
+      };
+      this.getGeneratedValue = function (argument) {
+          return value;
+      }
+
+      this.isHidden = function () {
+        return hidden;
+      }
+      this.hide = function () {
+         hidden = true;
+      }    
+
+
+      this.show = function () {
+         hidden = false;
+      }
+      /**
+       * return the value of the element that can be 'ƒ','$','@','#','%','†'
+       */
+
+      this.getValue = function () {
+        if (hidden) {
+            return '*';
+        } else{
+            return value;
+        }
+            
+      } 
+      this.setValue = function (newValue) {
+        value = newValue;
+      }
 
      /**
       * method to genererate a random number
       */
-      this.getRandom = function () {
+      var getRandom = function () {
           return Math.floor((Math.random() * 5));
       };
-     /**
-      * method to assign an value to an element
-      */
-      this.generateValue = function () {
-          value = symbols[this.getRandom()];
-      };
-      /**
-       * return the value of the element that can be 'ƒ','$','@','#','%','†'
-       */
-      this.getValue = function () {
-            return value;
-      } 
+     
       /**
        * set the position of the element 
        * @param {x} x represents the axis x
