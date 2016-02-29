@@ -3,7 +3,6 @@ var Control = function (size,nameOfPlayer,option) {
     var player = new Player(nameOfPlayer);
     var tableDrawer = new TableDrawer(size,option);
     var elementEvenNumber = [];
-    var namePlayer =  player;
     var tries = size*2;
     var score = 0;
    
@@ -29,7 +28,7 @@ var Control = function (size,nameOfPlayer,option) {
     this.incrementScore = function() {
         score++;
     };
-    this.getNumberOfTries = function (argument) {
+    this.getNumberOfTries = function () {
          return tries;
     }; 
     /*
@@ -80,7 +79,7 @@ var Control = function (size,nameOfPlayer,option) {
     posX: Position en X.
     posY: Position en Y.
     */
-    this.play = function (posX, posY) {
+    this.playConsole = function (posX, posY) {
 
       tableDrawed.displaySelectedElm(posX,posY);
 
@@ -88,7 +87,7 @@ var Control = function (size,nameOfPlayer,option) {
     /*
     triesG is a function that controls the number of tries.
     */
-    this.triesG = function (argument) {
+    this.triesOfConsole = function (argument) {
       var res = false;
       if (tries > 0) {
 

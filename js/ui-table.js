@@ -1,13 +1,12 @@
 
 var UiTable = function (size) {
    
-
    var table = new Table(size);
    var matrix = table.getMatrix();
-   var assertListHtmlCells = []; //lista de acertados html //guess list
-   var htmlCellsSelected = []; //pares 
+   var assertListHtmlCells = []; 
+   var htmlCellsSelected = []; //pair
    var numberOfClickTries = 0;       
-   var elementsEventNumber = control.getListEvenNumber(); //pares
+   var elementsEventNumber = control.getListEvenNumber(); 
   
   var hideElements = function () {
 
@@ -24,7 +23,7 @@ var UiTable = function (size) {
   };
   /*
   insertGuessList is a function that stores the cells selected
-  in assertListHtmlCells array when these cells selected are equals.
+  in assertListHtmlCells array when these cells selected are equals (guess cells).
   */
   var insertGuessList = function () {
 
@@ -55,12 +54,10 @@ var UiTable = function (size) {
       }
       return false;
   };
-  var matchingCells = function(){
-      if (compareCellsSelected()){
-      } 
-  };
-
-
+ /**
+  * method to control the guess selected
+  * @param  {html} htmlObject 
+  */
    var containsHtmlCells = function (htmlObject) {
       var res = false;
       for (var i = 0; i < assertListHtmlCells.length; i++) {
@@ -73,7 +70,9 @@ var UiTable = function (size) {
      return res;   
    }; 
 
-
+/*
+   This is an event handler to manage when the user do a click on a cell
+ */
    var clickCell = function() { 
      var $target = $(this);
      if (containsHtmlCells($(this))) {
@@ -88,7 +87,7 @@ var UiTable = function (size) {
             element.show();  
             control.addListEvenNumber(element);           
             $target.html(element.getValue());
-            matchingCells();
+            compareCellsSelected();
            
 
       }
