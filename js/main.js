@@ -4,7 +4,6 @@ console.log("Memory Game v1.1 beta   ");
 console.log("************************");
 */
   var control;
-
   window.onload = function () {
 
   var sizeSelected;
@@ -21,13 +20,11 @@ console.log("************************");
            
            control = new Control(sizeSelected,nickName,type);
            control.drawTable();
-      }
+      };
 
       var consoleMode = function (argument) {
-
-         if (type == 'Play by Console') {
-
-             while(control.triesG()){
+      if (type == 'Play by Console') {
+          while(control.triesG()){
 
                  var positions = prompt("Inserts positions");
                  var posX = positions.charAt(0);
@@ -38,13 +35,13 @@ console.log("************************");
              }
               alert("game finish The final score is " + control.getScore());      
            }
-      }
+      };
 
       $('#btn_BeginGame').on('click',createGame);
       $('#btn_BeginGame').on('click',consoleMode);
 
       
-  }
+};
 
 
 
