@@ -57,7 +57,7 @@ var UiTable = function (size) {
         else{
            
                 hideElements();
-                setTimeout(hideElementsByUI,400)
+                setTimeout(hideElementsByUI,200)
               
         }
       }
