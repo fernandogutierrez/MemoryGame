@@ -17,19 +17,30 @@ var Control = function (size,nameOfPlayer,option) {
     this.drawTable = function () {
         tableDrawed = tableDrawer.draw();
     };
-
+    
+    /**
+     * This methos is to decrement number of tries
+     */
     this.decrementTries = function(){
         tries--;
     };
-   
+    
+    /*
+     * This methos is to return the score riched by the player
+     */
     this.getScore = function()
     {
       return score;
     };
- 
+    /*
+     * This method is to increment the score when a user guess the selected cells
+     */
     this.incrementScore = function() {
         score++;
     };
+    /**
+     * this method returns the number of tries
+     */
     this.getNumberOfTries = function () {
          return tries;
     }; 
@@ -67,6 +78,9 @@ var Control = function (size,nameOfPlayer,option) {
          elementEvenNumber.push(element);
   	    
     };
+    /*
+     * This method is to return the list of even numbers
+     */
     this.getListEvenNumber = function () {
        return elementEvenNumber;
     };
@@ -82,13 +96,10 @@ var Control = function (size,nameOfPlayer,option) {
     posY: Position en Y.
     */
     this.playConsole = function (posX, posY) {
-        
-
       tableDrawed.displaySelectedElm(posX,posY);
-
     };
     /*
-    triesG is a function that controls the number of tries.
+     * triesG is a function that controls the number of tries.
     */
     this.triesOfConsole = function (argument) {
       var res = false;
@@ -98,7 +109,9 @@ var Control = function (size,nameOfPlayer,option) {
       }
       return res;  
     };
-
+    /*
+     * This method is to determine if the positions specifyed are numbers 
+     */  
     this.isNumbers = function (positions){
       var exp = /\d$/;
       return exp.test(positions);

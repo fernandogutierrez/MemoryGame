@@ -19,7 +19,9 @@
 	   this.updateConsole();
 	    
     };
-
+    /*
+     * This method is to retun one array of the elements with its values
+     */
     var getStrings = function (tableToConvert) {
        var res = [];
       
@@ -29,12 +31,16 @@
        return res;
     };
 
-
+    /**
+     * This method is to clear and display the current table by console
+     */
     this.updateConsole = function () {
     	  console.clear();
         this.printTableWithValues();
     };
-  
+    /**
+     * This method is to display the table with its current values by console
+     */
     this.printTableWithValues = function () {
       var values = [];
        for (var i = 0; i < size; i++){
@@ -45,7 +51,7 @@
     };
 
     /*
-    areValuesEqualsConsole is a function that controls if the elements selected
+      areValuesEqualsConsole is a function that controls if the elements selected are equals
     */
 	  this.areValuesEqualsConsole = function() {
         var elementsEventNumber = control.getListEvenNumber(); 

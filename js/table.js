@@ -21,7 +21,9 @@ var Table = function(size){
             })
       return res;
     };
-
+    /**
+     * This method return a random number from 0 to maxNumberOfRan field
+     */
     var getRandom= function(){
     
         var maxNumberOfRan = size;
@@ -74,16 +76,20 @@ var Table = function(size){
           }
      };
 
-   
+    /**
+     * This method return a Element and generate its value 
+     */
     var getElement = function () {
       element = new Element();  
       element.generateValue();
 
       return element;
     };
-
+    /**
+     * This method returns the size of the table
+     */
     this.getSize = function () {
-    return size;
+      return size;
     };
     /*
     fillPairs is a function that full the table controling that 
@@ -105,7 +111,9 @@ var Table = function(size){
         }
     };
 
-
+    /*
+     * This method is to return the matrix genereated in the table class
+     */
     this.getMatrix= function () {
      return elementsMatrix;
     };

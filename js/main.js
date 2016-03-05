@@ -10,19 +10,22 @@ console.log("************************");
   var nickName;
   var type; 
      
-  
-      var createGame = function (argument) {
-
+      /**
+       * This method initialize the game by instancing the Control class 
+       * and call the drawTable method
+       */
+      var createGame = function () {
            nickName = $('#nickName').val();
-
            sizeSelected = $('#size').find('option:selected').text();
            type = $('#typeGame').find('option:selected').text();
            $("#mainPage").empty()
-           
            control = new Control(sizeSelected,nickName,type);
            control.drawTable();
       };
-
+      /*
+       * This method ask the user the positions to display by console and
+       * display the messages when the game has been ended
+       */ 
       var consoleMode = function () {
           if (type == 'Play by Console') {
               while(control.triesOfConsole()){
