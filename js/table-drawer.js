@@ -6,7 +6,7 @@ var TableDrawer = function(size,option) {
   */
   this.draw = function () {
   	if (option == 'Play by Ui') {
-  		return drawByUI();
+  	    drawByUI();
       
   	}
   	if (option == 'Play by Console') {
@@ -14,6 +14,8 @@ var TableDrawer = function(size,option) {
   	}
 
   };
+
+  
 
   var drawByConsole = function () {
     
@@ -25,7 +27,6 @@ var TableDrawer = function(size,option) {
   var drawByUI = function () {
     var uiTable = new UiTable(size);
     uiTable.createTable();
-    return uiTable;
   };
   
   this.playByConsole = function (posX,posY) {

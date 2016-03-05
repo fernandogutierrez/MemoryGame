@@ -19,7 +19,7 @@ var UiTable = function (size) {
           htmlCellsSelected[0].html(elementsEventNumber[0].getValue());
           htmlCellsSelected[1].html(elementsEventNumber[1].getValue());
           htmlCellsSelected = [];
-          control.emptyListOfValues();
+          control.emptyListEvenNumber();  
   };
   /*
   insertGuessList is a function that stores the cells selected
@@ -41,7 +41,7 @@ var UiTable = function (size) {
 
                 control.incrementScore();
                 insertGuessList();
-                control.emptyListOfValues();
+                control.emptyListEvenNumber();
                 htmlCellsSelected = [];
                 return true;
         } 
@@ -75,7 +75,7 @@ var UiTable = function (size) {
  */
    var clickCell = function() { 
      var $target = $(this);
-     if (containsHtmlCells($(this))) {
+     if (containsHtmlCells($target)) {
          return false;
      }
      else {
@@ -89,7 +89,6 @@ var UiTable = function (size) {
             $target.html(element.getValue());
             compareCellsSelected();
            
-
       }
       numberOfClickTries++;
        
@@ -98,15 +97,28 @@ var UiTable = function (size) {
     var finishGame = function () {
       if (numberOfClickTries >= control.getNumberOfTries()) {
             $('tr').off('click','td', this.clickCell);
-            $('h6').text('The game has finished your Score is : ' + control.getScore());
+
+            if (control.getScore() >= control.goal) {
+               $('h6').text('The game has finished YOU WIN : ' + 'Your score is: ' +control.getScore());
+            
+            }else{
+               $('h6').text('The game has finished YOU LOST : ' + 'Your score is: ' +control.getScore());
+            }
+
+
       }
       
     };
 
     var activeCell = function () {
+       var $target = $(this);
+       if (containsHtmlCells($target)) {
+           return false;
+       }
+       else{
 
-       $(this).removeClass().addClass('active');
-
+          $target.removeClass().addClass('active'); 
+       }
     };
     var unactiveCell = function () {    
        $(this).removeClass();

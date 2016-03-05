@@ -3,7 +3,9 @@ var Control = function (size,nameOfPlayer,option) {
     var player = new Player(nameOfPlayer);
     var tableDrawer = new TableDrawer(size,option);
     var elementEvenNumber = [];
-    var tries = size*2;
+    var tries = size*size;
+    this.goal = size;
+
     var score = 0;
    
     var tableDrawed;
@@ -12,12 +14,12 @@ var Control = function (size,nameOfPlayer,option) {
     drawTable is a function that decide how will be draw
     the table according the parameter option.
     */
-    this.drawTable= function () {
+    this.drawTable = function () {
         tableDrawed = tableDrawer.draw();
     };
 
     this.decrementTries = function(){
-      tries--;
+        tries--;
     };
    
     this.getScore = function()
@@ -71,7 +73,7 @@ var Control = function (size,nameOfPlayer,option) {
     /*
     emptyListOfValues is a function that clear elementEvenNumber array.
     */
-    this.emptyListOfValues = function () {
+    this.emptyListEvenNumber = function () {
        elementEvenNumber = [];
     };
     /*
@@ -80,6 +82,7 @@ var Control = function (size,nameOfPlayer,option) {
     posY: Position en Y.
     */
     this.playConsole = function (posX, posY) {
+        
 
       tableDrawed.displaySelectedElm(posX,posY);
 
@@ -96,6 +99,10 @@ var Control = function (size,nameOfPlayer,option) {
       return res;  
     };
 
+    this.isNumbers = function (positions){
+      var exp = /\d$/;
+      return exp.test(positions);
+    }
 
  };
 

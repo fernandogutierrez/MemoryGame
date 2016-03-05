@@ -3,7 +3,12 @@
       var value = '*';
       var posX;
       var posY;
-      var symbols=['ƒ','$','@','#','%','†'];
+      var symbols=['ƒ','$','@','#','%','†',
+                   'S','X','A','B','C','D',
+                   'E','F','G','H','I','J',
+                   'K','L','M','N','O','P',
+                   'Q','R','T','U','V','W',
+                   'Y','Z'];
       var hidden = true;
 
       /**
@@ -43,7 +48,7 @@
       };
 
       var getRandom = function () {
-          return Math.floor((Math.random() * 5));
+          return Math.floor((Math.random() * 32));
       };
      
       /**

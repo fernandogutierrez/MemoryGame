@@ -1,19 +1,12 @@
 var Player=function(name, size){
-    var posxy;
+
+    var name;
 
     this.setName= function (n) {
         name=n;
     };
-    this.setPosXY= function (pxy) {
-        posxy=pxy;
-    };
-    this.getName= function () {
+    
+    this.getName = function () {
         return name;
-    };
-    this.getPosXY= function () {
-        return posxy;
-    };
-    this.getSize = function () {
-        return size;
-    };
+    }
 };

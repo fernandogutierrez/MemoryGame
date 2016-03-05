@@ -60,11 +60,11 @@
 	            	  this.updateConsole()
                   elementsEventNumber[0].hide();
 	                elementsEventNumber[1].hide();
-	                alert('dont assertttt');
+	                alert('sorry :\'(... try again!!');
 	                this.updateConsole();
 	                
 	            }
-              control.emptyListOfValues();
+              control.emptyListEvenNumber();
 	           
 	        }
 	        return false;
