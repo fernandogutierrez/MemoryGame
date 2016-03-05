@@ -78,9 +78,6 @@ var UiTable = function (size) {
       }
      return res;   
    }; 
-
-
-
   /*
    This is an event handler to manage when the user do a click on a cell
   */
@@ -119,6 +116,7 @@ var UiTable = function (size) {
             }else{
                $('h6').text('The game has finished YOU LOST : ' + 'Your score is: ' +control.getScore());
             }
+        
       }
       
     };
