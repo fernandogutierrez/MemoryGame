@@ -79,6 +79,8 @@ var UiTable = function (size) {
      return res;   
    }; 
 
+
+
   /*
    This is an event handler to manage when the user do a click on a cell
   */
@@ -109,6 +111,7 @@ var UiTable = function (size) {
     var finishGame = function () {
       if (numberOfClickTries >= control.getNumberOfTries()) {
             $('tr').off('click','td', this.clickCell);
+            $('tr').off('mouseover','td', activeCell);
 
             if (control.getScore() >= control.goal) {
                $('h6').text('The game has finished YOU WIN : ' + 'Your score is: ' +control.getScore());
